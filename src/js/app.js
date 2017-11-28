@@ -376,6 +376,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
 
 
     $scope.doLogin = function() {
+        if (window.gtag) {
+            gtag('event', 'doLogin');
+        }
+
         $scope.loginData.error = null;
         var twoFactorToken = $scope.loginData.twoFactorToken;
         $scope.loginData.twoFactorToken = null; // consumed
@@ -519,6 +523,9 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
      * import a backup document and parse to get backup data
      */
     $scope.importBackup = function() {
+        if (window.gtag) {
+            gtag('event', 'importBackup');
+        }
 
         $modal.open({
             templateUrl: "templates/modal.import-backup.html",
@@ -550,6 +557,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
      * use password recovery feature for v2 wallets
      */
     $scope.lostPassword = function() {
+        if (window.gtag) {
+            gtag('event', 'lostPassword');
+        }
+
         $modal.open({
             templateUrl: "templates/modal.recover-password.html",
             controller: "recoverPasswordCtrl",
@@ -605,6 +616,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
      * @returns {boolean}
      */
     $scope.initWalletSweeper = function() {
+        if (window.gtag) {
+            gtag('event', 'initWalletSweeper');
+        }
+
         $scope.firstAddress = null;
 
         $scope.result = {working: true};
@@ -692,6 +707,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
     };
 
     $scope.discoverFundsAgain = function() {
+        if (window.gtag) {
+            gtag('event', 'discoverFundsAgain');
+        }
+
         $timeout(function() {
             $scope.foundFunds = false;
             $scope.walletSweeper.settings.sweepBatchSize = $scope.recoverySettings.sweepBatchSize = $scope.recoverySettings.sweepBatchSize * 2;
@@ -706,6 +725,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
      * @returns {boolean}
      */
     $scope.discoverFunds = function() {
+        if (window.gtag) {
+            gtag('event', 'discoverFunds');
+        }
+
         if ($scope.result.working) {
             return false;
         }
@@ -767,6 +790,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
      * @returns {boolean}
      */
     $scope.recoverFunds = function(destinationAddress, inputForm) {
+        if (window.gtag) {
+            gtag('event', 'recoverFunds');
+        }
+
         if ($scope.result.working) {
             return false;
         }
@@ -881,6 +908,10 @@ app.controller('walletRecoveryCtrl', function($scope, $q, $modal, $rootScope, $l
 
 
     $scope.sendTx = function(service, txData) {
+        if (window.gtag) {
+            gtag('event', 'sendTx');
+        }
+
         if ($scope.result.working) {
             return false;
         }
